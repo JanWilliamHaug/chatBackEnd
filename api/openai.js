@@ -7,11 +7,14 @@ const openai = new OpenAIApi(configuration);
 
 console.log("OpenAI API Key:", process.env.OPENAI_API_KEY);
 
-async function generateResponse(prompt) {
+async function generateResponse(userInput) {
   try {
+    const context = "I am a chatbot trained to have casual conversations with users.";
+    const fullPrompt = `${context} User: ${userInput}`;
+
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: prompt,
+      prompt: fullPrompt,
       temperature: 0.5,
       max_tokens: 150,
       top_p: 1.0,
