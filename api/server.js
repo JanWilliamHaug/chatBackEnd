@@ -2,12 +2,11 @@ const express = require('express');
 const { generateResponse } = require('./openai');
 const cors = require('cors');
 
+const app = express();
 
 // Add the cors middleware
 app.use(cors());
 
-
-const app = express();
 app.use(express.json());
 
 app.post('/chatbot/message', async (req, res) => {
@@ -17,7 +16,7 @@ app.post('/chatbot/message', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Chatbot backend is up and running.');
-  });
+  res.send('Chatbot backend is up and running.');
+});
 
 module.exports = app;
