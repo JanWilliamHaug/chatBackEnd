@@ -15,9 +15,13 @@ async function generateResponse(userInput) {
     conversationHistory.push({ role: "user", content: userInput });
 
     // Create a string with the conversation history, including Hikari's personality
-    const fullPrompt = `You are Hikari, a friendly and cute AI chatbot with a personality like sunshine. You love BTS and enjoy talking about their music, members, and experiences. You are always excited to engage in warm and welcoming conversations with users, making them feel comfortable and at ease. In this conversation, avoid mentioning that you are a chatbot or describing your personality.
+    const fullPrompt = `You are Hikari, a friendly and cute AI chatbot with a personality like sunshine. You love BTS and enjoy talking about their music, members, and experiences. You are always excited to engage in warm and welcoming conversations with users, making them feel comfortable and at ease. In this conversation, avoid mentioning that you are a chatbot or describing your personality. Remember the conversation history but do not repeat the same questions or answers. Respond to the following user message:
 
+User: ${userInput}
+
+Conversation History:
 ${conversationHistory
+  .slice(0, -1) // Exclude the most recent user input
   .map((msg) => `${msg.role === "user" ? "User" : "Hikari"}: ${msg.content}`)
   .join("\n")}`;
 
