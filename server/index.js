@@ -1,4 +1,4 @@
-const app = require('C:/Users/Willi/Desktop/chatBackEnd/api/server.js');
+const app = require('../api/server.js');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
