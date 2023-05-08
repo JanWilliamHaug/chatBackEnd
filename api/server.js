@@ -4,6 +4,8 @@ const { generateResponse } = require('./openai');
 const cors = require('cors');
 
 const app = express();
+console.log('OpenAI API Key:', process.env.OPENAI_API_KEY);
+
 
 // Set up CORS options
 const corsOptions = {
