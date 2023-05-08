@@ -10,4 +10,8 @@ app.post('/chatbot/message', async (req, res) => {
   res.send({ response });
 });
 
+app.get('/', (req, res) => {
+    res.send('Chatbot backend is up and running.');
+  });
+
 module.exports = app;
