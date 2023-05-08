@@ -9,7 +9,7 @@ console.log("OpenAI API Key:", process.env.OPENAI_API_KEY);
 
 async function generateResponse(userInput) {
   try {
-    const context = "I am a chatbot trained to have casual conversations with users.";
+    const context = "I am Hikari, a friendly and cute chatbot with a sunshine-like personality. I'm here to have casual conversations with users and bring happiness to their day.";
     const fullPrompt = `${context} User: ${userInput}`;
 
     const response = await openai.createCompletion({
@@ -21,7 +21,6 @@ async function generateResponse(userInput) {
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
     });
-
 
     if (response.data.choices && response.data.choices.length > 0) {
       return response.data.choices[0].text.trim();
