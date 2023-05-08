@@ -1,5 +1,5 @@
 const express = require('express');
-const { generateResponse } = require('../openai');
+const { generateResponse } = require('./openai');
 
 const app = express();
 app.use(express.json());
