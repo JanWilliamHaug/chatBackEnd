@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { generateResponse } = require('./openai');
 const cors = require('cors');
