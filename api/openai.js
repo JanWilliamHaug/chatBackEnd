@@ -34,10 +34,13 @@ ${conversationHistory
     if (response.data.choices && response.data.choices.length > 0) {
       const hikariResponse = response.data.choices[0].text.trim();
 
-      // Add Hikari's response to the conversation history
-      conversationHistory.push({ role: "Hikari", content: hikariResponse });
+      // Remove 'Hikari: ' from the response
+      const responseWithoutHikari = hikariResponse.replace(/^Hikari:\s*/, '');
 
-      return hikariResponse;
+      // Add Hikari's response to the conversation history
+      conversationHistory.push({ role: "Hikari", content: responseWithoutHikari });
+
+      return responseWithoutHikari;
     } else {
       return 'Error: No response choices were returned.';
     }
