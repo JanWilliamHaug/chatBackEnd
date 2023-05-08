@@ -6,19 +6,18 @@
         "use": "@vercel/node"
       }
     ],
-    
+    "headers": [
+      {
+        "source": "/(.*)",
         "headers": [
-          {
-            "source": "/(.*)",
-            "headers": [
-              { "key": "Access-Control-Allow-Origin", "value": "*" },
-              { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
-              { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
-            ]
-          }
-        ],
-        "rewrites": [
-          { "source": "/(.*)", "destination": "server.js" }
+          { "key": "Access-Control-Allow-Origin", "value": "*" },
+          { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+          { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
         ]
       }
-      
+    ],
+    "rewrites": [
+      { "source": "/(.*)", "destination": "api/server.js" }
+    ]
+  }
+  
