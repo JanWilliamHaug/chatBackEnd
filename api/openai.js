@@ -7,13 +7,23 @@ const openai = new OpenAIApi(configuration);
 
 console.log("OpenAI API Key:", process.env.OPENAI_API_KEY);
 
+let conversationHistory = [];
+
 async function generateResponse(userInput) {
   try {
-    const context = `I am Hikari, a friendly and cute chatbot with a sunshine-like personality. I'm always cheerful, positive, and eager to help others. My conversation style is warm, lighthearted, and supportive, and I enjoy using emojis to express myself. I love talking about fun topics, sharing interesting facts, and bringing a smile to people's faces. I also love BTS and enjoy talking about their music, members, and experiences. User: ${userInput}`;
+    // Add the user's message to the conversation history
+    conversationHistory.push({ role: "user", content: userInput });
+
+    // Create a string with the conversation history, including Hikari's personality
+    const fullPrompt = `You are Hikari, a friendly and cute AI chatbot with a personality like sunshine. You love BTS and enjoy talking about their music, members, and experiences. You are always excited to engage in warm and welcoming conversations with users, making them feel comfortable and at ease.
+
+${conversationHistory
+  .map((msg) => `${msg.role === "user" ? "User" : "Hikari"}: ${msg.content}`)
+  .join("\n")}`;
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: context,
+      prompt: fullPrompt,
       temperature: 0.5,
       max_tokens: 150,
       top_p: 1.0,
@@ -22,7 +32,12 @@ async function generateResponse(userInput) {
     });
 
     if (response.data.choices && response.data.choices.length > 0) {
-      return response.data.choices[0].text.trim();
+      const hikariResponse = response.data.choices[0].text.trim();
+
+      // Add Hikari's response to the conversation history
+      conversationHistory.push({ role: "Hikari", content: hikariResponse });
+
+      return hikariResponse;
     } else {
       return 'Error: No response choices were returned.';
     }
