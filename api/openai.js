@@ -5,6 +5,8 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+console.log("OpenAI API Key:", process.env.OPENAI_API_KEY);
+
 async function generateResponse(prompt) {
   try {
     const response = await openai.createCompletion({
