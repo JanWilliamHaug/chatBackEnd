@@ -1,5 +1,11 @@
 const express = require('express');
 const { generateResponse } = require('./openai');
+const cors = require('cors');
+
+
+// Add the cors middleware
+app.use(cors());
+
 
 const app = express();
 app.use(express.json());
