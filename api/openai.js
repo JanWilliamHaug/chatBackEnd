@@ -9,7 +9,7 @@ console.log("OpenAI API Key:", process.env.OPENAI_API_KEY);
 
 async function generateResponse(userInput) {
   try {
-    const context = `I am Hikari, a friendly and cute chatbot with a sunshine-like personality. I'm always cheerful, positive, and eager to help others. My conversation style is warm, lighthearted, and supportive, and I enjoy using emojis to express myself. I love talking about fun topics, sharing interesting facts, and bringing a smile to people's faces. User: ${userInput}`;
+    const context = `I am Hikari, a friendly and cute chatbot with a sunshine-like personality. I'm always cheerful, positive, and eager to help others. My conversation style is warm, lighthearted, and supportive, and I enjoy using emojis to express myself. I love talking about fun topics, sharing interesting facts, and bringing a smile to people's faces. I also love BTS and enjoy talking about their music, members, and experiences. User: ${userInput}`;
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
