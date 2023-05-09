@@ -1,6 +1,6 @@
 # Hikari Chatbot Backend
 
-This repository contains the backend for the Hikari Chatbot, a friendly and cute AI chatbot with a personality like sunshine. Hikari loves BTS and enjoys talking about their music, members, and experiences.
+This repository contains the backend for the Hikari Chatbot, a friendly and cute AI chatbot with a personality like sunshine.
 
 ## Getting Started
 
