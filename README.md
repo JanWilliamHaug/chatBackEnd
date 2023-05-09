@@ -13,10 +13,10 @@ This repository contains the backend for the Hikari Chatbot, a friendly and cute
 ### Installation
 
 1. Clone the repository
-git clone https://github.com/yourusername/hikari-chatbot-backend.git
+git clone https://github.com/yourusername/chatBackEnd.git
 
 2. Install dependencies
-- cd (folder)
+- cd chatBackEnd
 - npm install
 
 3. Set up environment variables
