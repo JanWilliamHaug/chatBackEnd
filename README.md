@@ -13,31 +13,11 @@ This repository contains the backend for the Hikari Chatbot, a friendly and cute
 ### Installation
 
 1. Clone the repository
-2. 
-Sure, here is a simple README.md for your backend repository:
-
-markdown
-Copy code
-# Hikari Chatbot Backend
-
-This repository contains the backend for the Hikari Chatbot, a friendly and cute AI chatbot with a personality like sunshine. Hikari loves BTS and enjoys talking about their music, members, and experiences.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js
-- npm
-- An OpenAI API key
-
-### Installation
-
-1. Clone the repository
 git clone https://github.com/yourusername/hikari-chatbot-backend.git
 
 2. Install dependencies
-cd (folder)
-npm install
+- cd (folder)
+- npm install
 
 3. Set up environment variables
    Create a `.env` file in the root of the project and add the following:
