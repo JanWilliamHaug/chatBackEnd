@@ -6,6 +6,7 @@ const User = require('../../models/User');
 
 // Register a new user
 router.post('/register', async (req, res) => {
+    console.log('Register request received:', req.body);
   try {
     // Check if the user already exists
     const existingUser = await User.findOne({ email: req.body.email });
@@ -33,6 +34,7 @@ router.post('/register', async (req, res) => {
 
 // Login an existing user
 router.post('/login', async (req, res) => {
+    console.log('Login request received:', req.body);
   try {
     // Find the user by email
     const user = await User.findOne({ email: req.body.email });

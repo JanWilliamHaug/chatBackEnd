@@ -32,4 +32,10 @@ app.get('/', (req, res) => {
   res.send('Chatbot backend is up and running.');
 });
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+
 module.exports = app;
