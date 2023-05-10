@@ -5,6 +5,8 @@ const cors = require('cors');
 
 const app = express();
 
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
 
 // Set up CORS options
 const corsOptions = {
@@ -12,6 +14,8 @@ const corsOptions = {
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 };
+
+
 
 // Add the cors middleware with options
 app.use(cors(corsOptions));
