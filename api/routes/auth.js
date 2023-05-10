@@ -7,33 +7,32 @@ const User = require('../../models/User');
 // Register a new user
 router.post('/register', async (req, res) => {
     console.log('Register request received:', req.body);
-  try {
-    // Check if the user already exists
-    const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
-    }
-
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-    // Create a new user
-    const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: hashedPassword,
-    });
-
-    // Save the user to the database
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
-    } catch (error) 
-    {
-    console.error('Error:', error);
-    res.status(500).json({ message: `Server error: ${error.message}` });
-    }
+    try {
+      // Check if the user already exists
+      const existingUser = await User.findOne({ email: req.body.email });
+      if (existingUser) {
+        return res.status(400).json({ message: 'User already exists' });
+      }
   
-});
+      // Hash the password
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  
+      // Create a new user
+      const newUser = new User({
+        username: req.body.username,
+        email: req.body.email,
+        password: hashedPassword,
+      });
+  
+      // Save the user to the database
+      const savedUser = await newUser.save();
+      res.status(201).json(savedUser);
+    } catch (error) {
+      console.error('Error in /register route:', error);
+      res.status(500).json({ message: `Server error: ${error.message}` });
+    }
+  });
+  
 
 // Login an existing user
 router.post('/login', async (req, res) => {
