@@ -5,7 +5,14 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const uri = process.env.MONGODB_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  dbName: "Hikari",
+  collection: "Users"
+});
 
 const connection = mongoose.connection;
 connection.once('open', () => {
