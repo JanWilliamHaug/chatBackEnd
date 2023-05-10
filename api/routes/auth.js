@@ -27,9 +27,12 @@ router.post('/register', async (req, res) => {
     // Save the user to the database
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
-  } catch (error) {
-    res.status(500).json({ message: 'Server error' });
-  }
+    } catch (error) 
+    {
+    console.error('Error:', error);
+    res.status(500).json({ message: `Server error: ${error.message}` });
+    }
+  
 });
 
 // Login an existing user
@@ -52,9 +55,11 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     // Send the token to the client
     res.status(200).json({ token, userId: user._id, username: user.username });
-    } catch (error) {
-    res.status(500).json({ message: 'Server error' });
-    }
+} catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ message: `Server error: ${error.message}` });
+  }
+  
     });
 
 module.exports = router;
