@@ -20,8 +20,9 @@ const corsOptions = {
 // Add the cors middleware with options
 app.use(cors(corsOptions));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ type: 'application/json' }));
+app.use(express.urlencoded({ extended: true, type: 'application/x-www-form-urlencoded' }));
+
 
 
 
