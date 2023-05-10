@@ -11,7 +11,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   dbName: "Hikari",
-  collection: "Users"
 });
 
 const connection = mongoose.connection;
